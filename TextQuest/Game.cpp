@@ -7,24 +7,40 @@ void Game::run()
 		load_scenes();
 	}
 	
-	switch (current_state)
+	while (running)
 	{
-	case GameState::game:
-		run_game();
-		break;
-	case GameState::main_menu:
-		run_start();
-		break;
-	case GameState::death:
-		run_death();
-		break;
+	    switch (current_state)
+	    {
+	    case GameState::game:
+		    run_game();
+		    break;
+	    case GameState::main_menu:
+		    run_start();
+		    break;
+	    case GameState::death:
+			run_death();
+		    break;
+		case GameState::help:
+			run_help();
+			break;
+	    }
+
+	string user_action = get_user_input();
+	do_action(user_action);
 	}
+
 
     _getch();
 }
-void Game::run_game()
+void Game::run_help()
 {
 
+}
+void Game::run_game()
+{
+	int scene_counter = 0;
+	Scene* current_scene = scenes[scene_counter];
+	current_scene->draw();
 }
 void Game::run_death()
 {
@@ -35,7 +51,27 @@ void Game::run_start()
 	system("cls");
 	draw_start();
 }
-   
+void Game::do_action(string user_choice)
+{
+	if (user_choice == "START")
+	{
+		system("cls");
+		current_state = GameState::game;
+	}
+	if (user_choice == "help")
+	{
+		system("cls");
+		current_state = GameState::help;
+	}
+}
+string Game::get_user_input()
+{
+	cout << ">>";
+	string command;
+    cin >> command;
+
+	return command;
+}
 void Game::draw_start()
 {
 	cout <<"    " << "######### ######### #         #  ###########" << endl;
@@ -90,6 +126,7 @@ int Game::get_max_scene_number()
 }
 Game::Game()
 {
+	running = true;
 	scenes_are_loaded = false;
 	current_state = GameState::main_menu;
 }
