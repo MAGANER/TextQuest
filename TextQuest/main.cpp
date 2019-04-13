@@ -1,8 +1,11 @@
+#include<Windows.h>
 #include"Game.h"
 
 
 int main()
 {
+	SetConsoleTitle("TextQuest");
+
 	Game* game = new Game;
 	game->run();
 
