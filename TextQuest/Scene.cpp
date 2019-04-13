@@ -1,6 +1,22 @@
 #include "Scene.h"
 
 
+void Scene::draw_actions()
+{
+	cout << "################################" << endl;
+	cout << "            actions:" << endl;
+	auto action = actions.begin();
+	while (action != actions.end())
+	{
+		cout <<(*action)->number<<": "<< (*action)->text << endl;
+		++action;
+	}
+}
+void Scene::draw()
+{
+	cout << task << endl;
+	draw_actions();
+}
 string Scene::get_type()
 {
 	return type;
@@ -54,12 +70,18 @@ void Scene::load(string path)
 
 				   action->next_scene_id = data["scenes"][to_string(object_counter)].at(2);
 
+				   actions.push_back(action);
 				   object_counter++;
 			   }
 		   }
 		   else
 		   {
-			   cout << "level is loaded" << endl;
+			   cout << "scene is loaded!" << endl;
+
+			   //play melody :)
+			   Beep(300, 75);
+			   Beep(400, 60);
+			   Beep(441, 200);
 			   loading = false;
 		   }
 	    }

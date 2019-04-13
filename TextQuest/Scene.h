@@ -8,6 +8,7 @@
 #include<fstream>
 #include<vector>
 #include<iostream>
+#include<Windows.h>
 #include"json.hpp"
 
 using nlohmann::json;
@@ -30,12 +31,14 @@ private:
 	string task;
 
 	vector<Action*> actions;
+	void draw_actions();
 public:
 	vector<Action*> get_actions();
 	string get_task();
 	string get_type();
 
 	void load(string path);
+	void draw();
 	Scene();
 	~Scene();
 };
