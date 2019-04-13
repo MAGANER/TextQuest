@@ -38,9 +38,7 @@ void Game::run_help()
 }
 void Game::run_game()
 {
-	int scene_counter = 0;
-	Scene* current_scene = scenes[scene_counter];
-	current_scene->draw();
+	scenes[scene_counter]->draw();
 }
 void Game::run_death()
 {
@@ -51,7 +49,39 @@ void Game::run_start()
 	system("cls");
 	draw_start();
 }
-void Game::do_action(string user_choice)
+
+Scene* Game::get_scene(int id)
+{
+	auto scene = scenes.begin();
+	while (scene != scenes.end())
+	{
+		if ((*scene)->get_id() == id)
+		{
+			return *scene;
+		}
+		++scene;
+	}
+}
+void Game::check_game_actions(string user_choice)
+{
+	Scene* current_scene = new Scene();
+	current_scene = get_scene(scene_counter);
+	vector<Action> actions = current_scene->get_actions();
+
+	int user_choice_id = atoi(user_choice.c_str());
+	for (size_t action_number = 0; action_number < actions.size(); ++action_number)
+	{
+		int current_action_number = actions[action_number].number;
+		if (current_action_number == user_choice_id)
+		{
+			scene_counter = actions[action_number].next_scene_id;
+		}
+
+	}
+	system("cls");
+	
+}
+void Game::check_main_menu_actions(string user_choice)
 {
 	if (user_choice == "START")
 	{
@@ -63,6 +93,23 @@ void Game::do_action(string user_choice)
 		system("cls");
 		current_state = GameState::help;
 	}
+}
+void Game::do_action(string user_choice)
+{
+	switch (current_state)
+	{
+	case GameState::game:
+		check_game_actions(user_choice);
+		break;
+	case GameState::help:
+		break;
+	case GameState::main_menu:
+		check_main_menu_actions(user_choice);
+		break;
+	case GameState::death:
+		break;
+	}
+	Beep(444, 70);
 }
 string Game::get_user_input()
 {
@@ -129,6 +176,9 @@ Game::Game()
 	running = true;
 	scenes_are_loaded = false;
 	current_state = GameState::main_menu;
+	scene_counter = 0;
+
+	current_scene = new Scene;
 }
 
 
