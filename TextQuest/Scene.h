@@ -14,11 +14,18 @@
 using nlohmann::json;
 using namespace std;
 
-struct Action
+class Action
 {
+public:
 	int number;
 	string text;
 	int next_scene_id;
+	Action()
+	{
+	}
+	~Action()
+	{
+	}
 };
 
 class Scene
@@ -30,10 +37,10 @@ private:
 	string type;
 	string task;
 
-	vector<Action> actions;
+	vector<Action*> actions;
 	void draw_actions();
 public:
-	vector<Action>& get_actions();
+	vector<Action*>& get_actions();
 	string get_task();
 	string get_type();
 	int get_id();
