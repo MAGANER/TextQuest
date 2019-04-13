@@ -30,12 +30,13 @@ private:
 	string type;
 	string task;
 
-	vector<Action*> actions;
+	vector<Action> actions;
 	void draw_actions();
 public:
-	vector<Action*> get_actions();
+	vector<Action>& get_actions();
 	string get_task();
 	string get_type();
+	int get_id();
 
 	void load(string path);
 	void draw();

@@ -8,7 +8,7 @@ void Scene::draw_actions()
 	auto action = actions.begin();
 	while (action != actions.end())
 	{
-		cout <<(*action)->number<<": "<< (*action)->text << endl;
+		cout <<action->number<<": "<< action->text << endl;
 		++action;
 	}
 }
@@ -21,13 +21,17 @@ string Scene::get_type()
 {
 	return type;
 }
-vector<Action*> Scene::get_actions()
+vector<Action>& Scene::get_actions()
 {
 	return actions;
 }
 string Scene::get_task()
 {
 	return task;
+}
+int Scene::get_id()
+{
+	return id;
 }
 void Scene::load(string path)
 {
@@ -62,13 +66,13 @@ void Scene::load(string path)
 			   //load all actions to do
 			   while (!data["scenes"][to_string(object_counter)].empty())
 			   {
-				   Action * action = new Action;
-				   action->number = data["scenes"][to_string(object_counter)].at(0);
-
+				   Action  action;
+				   action.number = data["scenes"][to_string(object_counter)].at(0);
+				   
 				   string text   = data["scenes"][to_string(object_counter)].at(1);
-				   action->text = text;
+				   action.text = text;
 
-				   action->next_scene_id = data["scenes"][to_string(object_counter)].at(2);
+				   action.next_scene_id = data["scenes"][to_string(object_counter)].at(2);
 
 				   actions.push_back(action);
 				   object_counter++;
@@ -77,7 +81,7 @@ void Scene::load(string path)
 		   else
 		   {
 			   cout << "scene is loaded!" << endl;
-
+			  
 			   //play melody :)
 			   Beep(300, 75);
 			   Beep(400, 60);
