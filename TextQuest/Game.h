@@ -27,7 +27,6 @@ private:
 
 	vector<Scene*> scenes;
 	Scene* current_scene;
-	Scene* get_scene(int id); // returns scene with needed id
 private:
 	void run_game();
 	void run_death();

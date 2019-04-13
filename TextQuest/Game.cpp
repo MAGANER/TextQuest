@@ -6,7 +6,7 @@ void Game::run()
 	{
 		load_scenes();
 	}
-	
+
 	while (running)
 	{
 	    switch (current_state)
@@ -50,34 +50,23 @@ void Game::run_start()
 	draw_start();
 }
 
-Scene* Game::get_scene(int id)
-{
-	auto scene = scenes.begin();
-	while (scene != scenes.end())
-	{
-		if ((*scene)->get_id() == id)
-		{
-			return *scene;
-		}
-		++scene;
-	}
-}
 void Game::check_game_actions(string user_choice)
 {
-	Scene* current_scene = new Scene();
-	current_scene = get_scene(scene_counter);
-	vector<Action> actions = current_scene->get_actions();
+	Scene* current_scene = scenes[scene_counter];
+	vector<Action*> actions = current_scene->get_actions();
 
 	int user_choice_id = atoi(user_choice.c_str());
 	for (size_t action_number = 0; action_number < actions.size(); ++action_number)
 	{
-		int current_action_number = actions[action_number].number;
+		int current_action_number = actions[action_number]->number;
+
 		if (current_action_number == user_choice_id)
 		{
-			scene_counter = actions[action_number].next_scene_id;
+			scene_counter = actions[action_number]->next_scene_id;
 		}
 
 	}
+
 	system("cls");
 	
 }
@@ -154,6 +143,7 @@ void Game::load_scenes()
 		scene->load(path);
 		scenes.push_back(scene);
 	}
+	
 	scenes_are_loaded = true;
 }
 int Game::get_max_scene_number()
@@ -178,7 +168,6 @@ Game::Game()
 	current_state = GameState::main_menu;
 	scene_counter = 0;
 
-	current_scene = new Scene;
 }
 
 
