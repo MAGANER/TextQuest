@@ -63,6 +63,38 @@ void Game::check_game_actions(string user_choice)
 		if (current_action_number == user_choice_id)
 		{
 			scene_counter = actions[action_number]->next_scene_id;
+			if (scene_counter == 30)
+			{
+				cout << "ass" << endl;
+				cout << "@@@###$$$%%%^&*()_+|!!!YOU ARE LOOSER!!!|+_)(*&^%%%$$$###@@@" << endl;
+
+				//play some melody and exit
+				int freq = 300;
+				for (int i = 0; i < 20; ++i)
+				{
+					freq -= 10;
+					Beep(freq, 100);
+				}
+				Beep(160, 500);
+				Beep(150, 150);
+
+				exit(0);
+
+			}
+			else if (scene_counter == 31)
+			{
+				cout << "@@@###$$$%%%^&*()_+|!!!YOU ARE WINNER!!!|+_)(*&^%%%$$$###@@@" << endl;
+				//play melody and exit
+				int freq = 300;
+				for (int i = 0; i < 20; ++i)
+				{
+					freq += 10;
+					Beep(freq, 100);
+				}
+				Beep(560, 500);
+				Beep(570, 150);
+				exit(0);
+			}
 		}
 
 	}
