@@ -17,12 +17,6 @@ void Game::run()
 	    case GameState::main_menu:
 		    run_start();
 		    break;
-	    case GameState::death:
-			run_death();
-		    break;
-		case GameState::help:
-			run_help();
-			break;
 	    }
 
 	string user_action = get_user_input();
@@ -32,17 +26,10 @@ void Game::run()
 
     _getch();
 }
-void Game::run_help()
-{
 
-}
 void Game::run_game()
 {
 	scenes[scene_counter]->draw();
-}
-void Game::run_death()
-{
-
 }
 void Game::run_start()
 {
@@ -65,7 +52,6 @@ void Game::check_game_actions(string user_choice)
 			scene_counter = actions[action_number]->next_scene_id;
 			if (scene_counter == 30)
 			{
-				cout << "ass" << endl;
 				cout << "@@@###$$$%%%^&*()_+|!!!YOU ARE LOOSER!!!|+_)(*&^%%%$$$###@@@" << endl;
 
 				//play some melody and exit
@@ -109,11 +95,7 @@ void Game::check_main_menu_actions(string user_choice)
 		system("cls");
 		current_state = GameState::game;
 	}
-	if (user_choice == "help")
-	{
-		system("cls");
-		current_state = GameState::help;
-	}
+
 }
 void Game::do_action(string user_choice)
 {
@@ -122,12 +104,8 @@ void Game::do_action(string user_choice)
 	case GameState::game:
 		check_game_actions(user_choice);
 		break;
-	case GameState::help:
-		break;
 	case GameState::main_menu:
 		check_main_menu_actions(user_choice);
-		break;
-	case GameState::death:
 		break;
 	}
 	Beep(444, 70);

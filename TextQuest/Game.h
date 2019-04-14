@@ -11,9 +11,7 @@
 enum GameState
 {
 	game = 1,
-	death,
 	main_menu,
-	help
 };
 
 class Game
@@ -29,8 +27,6 @@ private:
 	Scene* current_scene;
 private:
 	void run_game();
-	void run_death();
-	void run_help();
 
 	void draw_start();
 	void run_start();
@@ -42,7 +38,9 @@ private:
 
 	void do_action(string user_choice);
 	void check_main_menu_actions(string user_choice);
+
 	void check_game_actions(string user_choice);
+
 public:
 	Game();
 	~Game();
