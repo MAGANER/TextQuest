@@ -1,0 +1,9 @@
+{
+    "scenes":
+    {
+        "0":[0,"out_of_room","you went out and now stand and see person in the end of coridor"],
+        "1":[0,"say:fuck you!",3],
+        "2":[1,"go near to person",3]
+    }
+
+}

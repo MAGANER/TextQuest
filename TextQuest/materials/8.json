@@ -1,0 +1,9 @@
+{
+    "scenes":
+    {
+        "0":[0,"new_room","you came in the room and see the table with beer"],
+        "1":[0,"come near to table",9],
+        "2":[1,"masturbate",10]
+    }
+
+}

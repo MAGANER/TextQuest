@@ -1,0 +1,8 @@
+{
+    "scenes":
+    {
+        "0":[0,"door","you stand in front of closed door"],
+        "1":[0,"strike door and come in",15],
+        "2":[1,"open door quietly",16]
+    }
+}

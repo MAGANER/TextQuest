@@ -1,0 +1,8 @@
+{
+    "scenes":
+    {
+        "0":[0,"out_of_room2","there is nothing in front of you"],
+        "1":[0,"go forward",6]
+    }
+
+}

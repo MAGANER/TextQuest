@@ -1,0 +1,9 @@
+{
+    "scenes":
+    {
+        "0":[0,"beer","you stand beside the table with beer"],
+        "1":[0,"drink beer",13],
+        "2":[1,"spit on the table",9],
+        "3":[2,"go to the door",14]
+    }
+}

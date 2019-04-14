@@ -1,0 +1,10 @@
+{
+    "scenes":
+    {
+        "0":[0,"dark_room","you see nothing"],
+        "1":[0,"go right",20],
+        "2":[1,"go left",20],
+        "3":[2,"come back",18]
+
+    }
+}

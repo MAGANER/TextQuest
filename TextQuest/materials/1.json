@@ -1,0 +1,9 @@
+{
+    "scenes":
+    {
+        "0":[0,"room","you see shit aroung and opened door"],
+        "1":[0,"go out",2],
+        "2":[1,"keep standing",1]
+    }
+
+}

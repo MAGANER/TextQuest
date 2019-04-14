@@ -1,0 +1,8 @@
+{
+    "scenes":
+    {
+        "0":[0,"new_coridor","you went forward but saw nothing"],
+        "1":[0,"go forward",8]
+    }
+
+}

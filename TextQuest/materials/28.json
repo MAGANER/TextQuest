@@ -1,0 +1,8 @@
+{
+    "scenes":
+    {
+        "0":[0,"end","someone says:no"],
+        "1":[0,"are you room?",23],
+        "2":[1,"i am room you are inside me",29]
+    }
+}

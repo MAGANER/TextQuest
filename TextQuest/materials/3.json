@@ -1,0 +1,9 @@
+{
+    "scenes":
+    {
+        "0":[0,"out_of_room1","person turns to dust"],
+        "1":[0,"say:what the fuck!",4],
+        "2":[1,"scream!",5]
+    }
+
+}

@@ -1,0 +1,10 @@
+{
+    "scenes":
+    {
+        "0":[0,"dialog","someone says:my fav one is red"],
+        "1":[0,"are you nigger?",23],
+        "2":[1,"are you negro?",23],
+        "3":[2,"are you black?",23],
+        "4":[3,"are you afro-american?",24]
+    }
+}
